@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+  <title>Dialog User</title>
+  <link rel="stylesheet" href="css/menu-style.css">
+  <link rel="stylesheet" href="css/dialog-u-content-style.css">
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  </head>
+<body>
+  <nav>
+    <div class="navbar">
+      
+      <div class="logo"><a href="#">EXAT NongSmart</a></div>
+      <div class="nav-links">
+        <ul class="links">
+          <li><a href="main-user-proto.html">HOME</a></li>
+          <li>
+            <a href="#">Dialogflow</a>
+            <i class='bx bxs-chevron-down js-arrow arrow '></i>
+            <ul class="js-sub-menu sub-menu">
+              <li><a href="edit-dialog-user-proto.html">Edit Dialogflow</a></li>
+              <li><a href="dialog-list-user.html">Dialogflow List</a></li>
+              <!--<li><a href="#">Check Dialogflow</a></li>-->
+            </ul>
+          </li>
+          <!--<li><a href="#">Mamagement Robot</a></li>-->
+          <!--<li><a href="#">Control Robot</a></li>-->
+        </ul>
+      </div>
+      <!-- <div class="logout"><a href="#" class="outbtn">LogOut</a></div> -->
+      <div class="profile"><a href="#" class="profile-img"><img src="img/avatar.png" alt="avatar" width="50"></a></div>
+    </div>
+  </nav>
+
+<div class="content">
+    <h1>Intent Manager</h1>
+  <div class="main-content">
+    <div class="intent-content">
+      <form id="intent-form">
+        <label for="intent-name-input">Intent Name:</label><br>
+        <input type="text" id="intent-name-input" name="intent-name"><br>
+        <label for="training-phrases-input">Training Phrases:</label><br>
+        <textarea id="training-phrases-input" name="training-phrases"></textarea><br>
+        <label for="responses-input">Responses:</label><br>
+        <textarea id="responses-input" name="responses"></textarea><br>
+        <button type="submit">Save</button>
+      </form>
+    </div>
+
+    <div class="try-content">
+      <form id="try-now-form">
+        <input type="text" id="try-now" name="try-now" placeholder="Try it now"><br>
+        <div id="show-respond">[Respond goes here]</div><br>
+      </form>
+    </div>
+  </div>
+</div> 
+
+</body>
+</html>
+
+

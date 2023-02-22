@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+body {
+    background-color: rgb(205, 205, 205);
+    margin-top: 90px;
+    color: white;
+    }
+.content {
+    padding: 2rem 0 1rem 0;
+    margin: 50px auto;
+    text-align: center;
+}
+h1{
+    margin: 0 15px;
+    font-weight: 600;
+    font-size: 30px;
+    letter-spacing: 2px;
+    color: white;
+  }
