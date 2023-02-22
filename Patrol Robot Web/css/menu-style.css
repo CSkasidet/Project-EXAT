@@ -35,6 +35,15 @@
    text-decoration: none;
    font-weight: 600;
  }
+ /*.page-logo {
+    padding-top: 50px;
+    padding-bottom: 35px;
+    width: 60px;
+    height: 145px;
+    display: block;
+
+ }*/
+
  nav .navbar .nav-links{
    line-height: 70px;
    height: 100%;
