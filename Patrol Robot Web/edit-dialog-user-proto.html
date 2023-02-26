@@ -13,7 +13,7 @@
   <nav>
     <div class="navbar">
       
-      <div class="logo"><a href="#">EXAT NongSmart</a></div>
+      <img src="img/logo exat.png" style="height: 60px; width: 60px;" alt="Logo" class="page-logo">
       <div class="nav-links">
         <ul class="links">
           <li><a href="main-user-proto.html">HOME</a></li>
@@ -31,7 +31,16 @@
         </ul>
       </div>
       <!-- <div class="logout"><a href="#" class="outbtn">LogOut</a></div> -->
-      <div class="profile"><a href="#" class="profile-img"><img src="img/avatar.png" alt="avatar" width="50"></a></div>
+      <div class="nav-links">
+        <ul class="links">
+        <li><a href="#" class="profile-img"><img src="img/avatar.png" alt="avatar" width="50"></a>
+          <ul class="js-sub-menu sub-menu">
+            <li><a href="#">Your Profile</a></li>
+            <li><a href="#">Log-out</a></li>
+          </ul>
+        </li>
+        </ul>
+      </div>
     </div>
   </nav>
 
@@ -40,13 +49,16 @@
   <div class="main-content">
     <div class="intent-content">
       <form id="intent-form">
-        <label for="intent-name-input">Intent Name:</label><br>
-        <input type="text" id="intent-name-input" name="intent-name"><br>
-        <label for="training-phrases-input">Training Phrases:</label><br>
-        <textarea id="training-phrases-input" name="training-phrases"></textarea><br>
-        <label for="responses-input">Responses:</label><br>
-        <textarea id="responses-input" name="responses"></textarea><br>
-        <button type="submit">Save</button>
+        <label for="intent">Intent Name:</label><br>
+        <input type="text" id="intent" name="intent"><br>
+
+        <label for="trainingphrases">Training Phrases:</label><br>
+        <input type="text" id="trainingphrases" name="trainingphrases"><br>
+
+        <label for="responses">Responses:</label><br>
+        <input type="text" id="responses" name="responses"><br>
+
+        <a href="#"><button type="submit" id="save-edit-dialog" name="save-edit-btn" class="save-edit-btn">Save</button></a>
       </form>
     </div>
 
@@ -58,6 +70,8 @@
     </div>
   </div>
 </div> 
+
+<script src="js/collect-edit-dialog.js" type="module"></script>
 
 </body>
 </html>

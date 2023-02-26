@@ -29,12 +29,13 @@
    /* background: red; */
    padding: 0 50px;
  }
- .navbar .logo a{
+ /*.navbar .logo a{
    font-size: 30px;
    color: #fff;
    text-decoration: none;
    font-weight: 600;
- }
+ }*/
+
  nav .navbar .nav-links{
    line-height: 70px;
    height: 100%;
@@ -94,6 +95,10 @@
    color: #fff;
    font-size: 15px;
    font-weight: 500;
+ }
+
+ .profile-img{
+  margin-top: 20px;
  }
 
  .navbar .nav-links .sidebar-logo{

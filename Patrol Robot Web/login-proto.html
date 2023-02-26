@@ -6,22 +6,25 @@
   <link rel="stylesheet" href="css/login-style.css">
    <!-- Font Link -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 </head>
 <body>
   <img src="img/logo exat.png" alt="Logo" class="page-logo">
   <div class="wrapper">
     <h1>Login</h1>
     <form>
-      <input type="text" placeholder="Enter username">
-      <input type="password" placeholder="Password">
+      <input type="text" placeholder="Enter email" name="email" id="email" required>
+      <input type="password" placeholder="Password" name="password" id="password" required>
       <p class="forgotpass">
-        <a href="#">Forgot Password</a>
+        <!--<a href="#">Forgot Password</a>-->
       </p>
     <closeform></closeform></form>
-    <button>Sign in</button>
+    <a href="#"><button type="submit" id="login" name="login-btn" class="loginbtn">Sign in</button></a>
     <div class="not-member">
-        Do not have an account? <a href="#">Register Now</a>
+        Do not have an account? <a href="register-proto.html">Register Now</a>
     </div>
   </div>
 </body>
+
+<script src="js/auth-login.js" type="module"></script>
 </html>
