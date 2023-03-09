@@ -5,6 +5,7 @@
   <link rel="stylesheet" href="css/menu-style.css">
   <link rel="stylesheet" href="css/home-content-style.css">
   <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
@@ -12,7 +13,8 @@
   <nav>
     <div class="navbar">
       
-      <div class="logo"><a href="#">EXAT NongSmart</a></div>
+      <!--<div class="logo"><a href="#">EXAT NongSmart</a></div>-->
+      <img src="img/logo exat.png" style="height: 60px; width: 60px;" alt="Logo" class="page-logo">
       <div class="nav-links">
         <ul class="links">
           <li><a href="main-proto.html">HOME</a></li>
@@ -25,12 +27,21 @@
               <li><a href="dialog-admin.html">Check Dialogflow</a></li>
             </ul>
           </li>
-          <li><a href="#">Mamagement Robot</a></li>
+          <li><a href="https://center.robotemi.com/">Mamagement Robot</a></li>
           <li><a href="#">Control Robot</a></li>
         </ul>
       </div>
       <!-- <div class="logout"><a href="#" class="outbtn">LogOut</a></div> -->
-      <div class="profile"><a href="#" class="profile-img"><img src="img/avatar.png" alt="avatar" width="50"></a></div>
+        <div class="nav-links">
+          <ul class="links">
+          <li><a href="#" class="profile-img"><img src="img/avatar.png" alt="avatar" width="50"></a>
+            <ul class="js-sub-menu sub-menu">
+              <li><a href="#">Your Profile</a></li>
+              <li><a href="#" type="submit" id="logout" name="logout-btn">Log-out</a>--></li>
+            </ul>
+          </li>
+          </ul>
+        </div>
     </div>
   </nav>
 
@@ -38,12 +49,57 @@
     <h1>Services</h1>
   <div class="home-button-container">
     <a href="dialog-admin.html"><button class="home-button"><img src="img/dialog logo.PNG" alt="Button Image 1">Check Dialogflow</button></a>
-    <a href="manage-robot.html"><button class="home-button"><img src="img/temi logo.PNG" alt="Button Image 2">Management Robot</button></a>
+    <a href="https://center.robotemi.com/"><button class="home-button"><img src="img/temi logo.PNG" alt="Button Image 2">Management Robot</button></a>
     <a href=""><button class="home-button"><img src="img/gear.PNG" alt="Button Image 3">Control Robot</button></a>
   </div>
 </div>
 
 </body>
+
+
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js";
+import {getAuth,onAuthStateChanged,signOut,signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.8.1/firebase-auth.js";
+import {getDatabase, set, ref, update} from "https://www.gstatic.com/firebasejs/9.8.1/firebase-database.js";
+const firebaseConfig = {
+    apiKey: "AIzaSyDcYn7wr-Z9kR5YyrUZvuU3Irv3IIusjO0",
+    authDomain: "project-exat.firebaseapp.com",
+    projectId: "project-exat",
+    storageBucket: "project-exat.appspot.com",
+    messagingSenderId: "595990368633",
+    appId: "1:595990368633:web:fa9cc62471d30e9d36dfa8",
+    measurementId: "G-6HS8XZ7BKV"
+  };
+
+   // Initialize Firebase
+   const app = initializeApp(firebaseConfig);
+   const auth = getAuth();
+   const database = getDatabase(app);
+
+   const email = document.getElementById('email');
+   const password = document.getElementById('password');
+
+
+//Log-OUT
+  logout.addEventListener('click',(e)=>{
+
+    signOut(auth).then(() => {
+      // Sign-out successful.
+      alert('user loged-out');
+      window.location="login-proto.html";
+    }).catch((error) => {
+      // An error happened.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+ 
+         alert(errorMessage);
+    });
+ 
+ });
+ </script>
+ 
 </html>
 
 
