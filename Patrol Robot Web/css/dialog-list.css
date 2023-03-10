@@ -29,7 +29,7 @@
     margin: 50px auto;
   }
   .list-view .view-item{
-    background: rgb(251, 133, 133);
+    background: #16eae4;
     border: 2px solid rgb(91, 91, 91);
     border-radius: 3px;
     margin: 10px;
@@ -56,7 +56,7 @@
   .view-item .btn{
     margin-top: 10px;
     width: 125px;
-    background: rgb(19, 71, 161);
+    background: #01d099;
     color: white;
     cursor: pointer;
     text-align: center;
@@ -65,5 +65,5 @@
     padding: 8px 5px;
   }
   .view-item .btn:hover{
-    background: rgb(12, 45, 102);
+    background: #0ae3a9;
   }

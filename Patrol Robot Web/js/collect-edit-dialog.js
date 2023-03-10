@@ -1,7 +1,7 @@
  // Import the functions you need from the SDKs you need
  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
- import { getFirestore , collection, getDocs, addDoc , deleteDoc,doc} from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
- import {getDatabase, set, ref, update} from "https://www.gstatic.com/firebasejs/9.8.1/firebase-database.js";
+ import { getFirestore , collection, getDocs, addDoc, arrayUnion, deleteDoc,doc} from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
+ //import {getDatabase, set, ref, update} from "https://www.gstatic.com/firebasejs/9.8.1/firebase-database.js";
  // TODO: Add SDKs for Firebase products that you want to use
  // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -23,11 +23,13 @@
  //const table = document.getElementById("table")
  const form = document.getElementById("intent-form")
 
- async function getEditDialog(database) {
+ /*async function getEditDialog(database) {
    const empCol = collection(database,'EditDialog')
    const empSnapshot = await getDocs(empCol)
    return empSnapshot
- }
+ }*/
+
+ 
  /*function showData(employee) {
    const row = table.insertRow(-1)
    const nameCol = row.insertCell(0)
@@ -58,15 +60,44 @@
  })*/
 
 //ดึงข้อมูลจากform
-form.addEventListener('submit', (event) => {
+/*form.addEventListener('submit', (event) => {
  event.preventDefault();
  addDoc(collection(database,'EditDialog'),{
     intent:form.intent.value,
-    trainingphrases:form.trainingphrases.value,
-    responses:form.responses.value
+    responses:form.responses.value,
+    trainingphrases:arrayInput.trainingphrases.data
+
  })
+ 
+ 
  form.intent.value=""
  form.trainingphrases.value=""
  form.responses.value=""
  alert("บันทึกเสร็จสิ้น")
-})
+})*/
+
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
+  // Your code to save data to Firestore
+  var intent = form.elements["intent"].value;
+  var training = form.elements["trianing[]"];
+  var trainingArray = [];
+  for (var i = 0; i < training.length; i++) {
+    trainingArray.push(training[i].value);
+  }
+  var responses = form.elements["responses"].value;
+
+  addDoc(collection(database,'EditDialog'),{
+    intent: intent,
+    training: trainingArray,
+    responses: responses
+  })
+  .then(function(docRef) {
+    console.log("Document written with ID: ", docRef.id);
+    alert("บันทึกเสร็จสิ้น")
+  })
+  .catch(function(error) {
+    console.error("Error adding document: ", error);
+  });
+
+});
