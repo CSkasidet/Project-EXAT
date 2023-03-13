@@ -23,58 +23,6 @@
  //const table = document.getElementById("table")
  const form = document.getElementById("intent-form")
 
- /*async function getEditDialog(database) {
-   const empCol = collection(database,'EditDialog')
-   const empSnapshot = await getDocs(empCol)
-   return empSnapshot
- }*/
-
- 
- /*function showData(employee) {
-   const row = table.insertRow(-1)
-   const nameCol = row.insertCell(0)
-   const agecol = row.insertCell(1)
-   const deletecol = row.insertCell(2)
-   nameCol.innerHTML = employee.data().name
-   agecol.innerHTML = employee.data().age
-
-   let btn = document.createElement('button')
-   btn.textContent = "ลบข้อมูล"
-   btn.setAttribute('data-Id',employee.id)
-   deletecol.appendChild(btn)
-   btn.addEventListener('click',(event)=>{
-     let id = event.target.getAttribute('data-id')
-     deleteDoc(doc(database,'Employees',id))
-   })
- }*/
-/*function showData(employee) {
-   console.log(employee.data().name)
-   console.log(employee.data().age)
- } */
-
-
- //ดึงข้อมูลใน document
- /*const data = await getEmployees(database)
- data.forEach(employee => {
-     showData(employee) 
- })*/
-
-//ดึงข้อมูลจากform
-/*form.addEventListener('submit', (event) => {
- event.preventDefault();
- addDoc(collection(database,'EditDialog'),{
-    intent:form.intent.value,
-    responses:form.responses.value,
-    trainingphrases:arrayInput.trainingphrases.data
-
- })
- 
- 
- form.intent.value=""
- form.trainingphrases.value=""
- form.responses.value=""
- alert("บันทึกเสร็จสิ้น")
-})*/
 
 form.addEventListener("submit", function(event) {
   event.preventDefault();
@@ -90,7 +38,8 @@ form.addEventListener("submit", function(event) {
   addDoc(collection(database,'EditDialog'),{
     intent: intent,
     training: trainingArray,
-    responses: responses
+    responses: responses,
+    type: 0
   })
   .then(function(docRef) {
     console.log("Document written with ID: ", docRef.id);

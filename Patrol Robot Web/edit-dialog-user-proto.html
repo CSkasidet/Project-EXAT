@@ -63,7 +63,7 @@
         <li><a href="#" class="profile-img"><img src="img/avatar.png" alt="avatar" width="50"></a>
           <ul class="js-sub-menu sub-menu">
             <li><a href="#">Your Profile</a></li>
-            <li><a href="#">Log-out</a></li>
+              <li><a href="#" type="submit" id="logout" name="logout-btn">Log-out</a></li>
           </ul>
         </li>
         </ul>
@@ -78,11 +78,8 @@
       <form id="intent-form">
         <label for="intent">Intent Name:</label><br>
         <input type="text" id="intent" name="intent"><br>
-
         <!--<label for="trainingphrases">Training Phrases:</label><br>
         <input type="text" id="trainingphrases" name="trainingphrases"><br>-->
-
-
         <div class="field_wrapper">
           <div>
               <label for="trainingphrases">Training Phrases:</label>
@@ -108,11 +105,62 @@
   </div>
 </div> 
 
-<script src="js/add-del-input.js"></script>
+
 <script src="js/collect-edit-dialog.js" type="module"></script>
 
 
+<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+<df-messenger
+  intent="WELCOME"
+  chat-title="Kasidet1"
+  agent-id="4f07f010-2df9-4b54-8d5d-071b9d7fb0ee"
+  language-code="th"
+></df-messenger>
+
 </body>
+
+<script type="module">
+
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js";
+  import {getAuth,onAuthStateChanged,signOut,signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.8.1/firebase-auth.js";
+  import {getDatabase, set, ref, update} from "https://www.gstatic.com/firebasejs/9.8.1/firebase-database.js";
+  const firebaseConfig = {
+      apiKey: "AIzaSyDcYn7wr-Z9kR5YyrUZvuU3Irv3IIusjO0",
+      authDomain: "project-exat.firebaseapp.com",
+      projectId: "project-exat",
+      storageBucket: "project-exat.appspot.com",
+      messagingSenderId: "595990368633",
+      appId: "1:595990368633:web:fa9cc62471d30e9d36dfa8",
+      measurementId: "G-6HS8XZ7BKV"
+    };
+  
+     // Initialize Firebase
+     const app = initializeApp(firebaseConfig);
+     const auth = getAuth();
+     const database = getDatabase(app);
+  
+     const email = document.getElementById('email');
+     const password = document.getElementById('password');
+  
+  
+  //Log-OUT
+    logout.addEventListener('click',(e)=>{
+  
+      signOut(auth).then(() => {
+        // Sign-out successful.
+        alert('user loged-out');
+        window.location="login-proto.html";
+      }).catch((error) => {
+        // An error happened.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+   
+           alert(errorMessage);
+      });
+   
+   });
+   </script>
+
 </html>
 
 

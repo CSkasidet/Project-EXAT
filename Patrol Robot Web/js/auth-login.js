@@ -18,38 +18,47 @@ const firebaseConfig = {
 
    const email = document.getElementById('email');
    const password = document.getElementById('password');
+   
 
    //Login
    login.addEventListener('click', (e) => {
 
-    var email = document.getElementById('email').value;
-    var password = document.getElementById('password').value;
-   signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                // Signed in
-                const user = userCredential.user;
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
 
-                // save log in details into real time database
-                var lgDate = new Date();
-                update(ref(database, 'users/' + user.uid), {
-                    last_login: lgDate,
-                })
-                    .then(() => {
-                        // Data saved successfully!
-                        alert('user logged in successfully');
-                        window.location="main-proto.html";
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // User logged in successfully, check their role
+        const user = userCredential.user;
 
-                    })
-                    .catch((error) => {
-                        // The write failed...
-                        alert(error);
-                    });
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                alert(errorMessage);
-            });
+        // save log in details into real time database
+        var lgDate = new Date();
+        update(ref(database, 'users/' + user.uid), {
+            last_login: lgDate,
+        })
+        .then(() => {
+          // Data saved successfully!
+          if (user.email === "admin@gmail.com") {
+            // User is an admin, redirect them to the admin page
+             window.location.href = "main-proto.html";
+           } else {
+             // User is a regular user, redirect them to the user page
+             window.location.href = "main-user-proto.html";
+           }
+        })
+        .catch((error) => {
+          // The write failed...
+          alert(error);
+        });
+        
+      })
+      .catch((error) => {
+        // Login failed
+        console.log("Invalid email or password");
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorMessage);
+      });
 
 });
 
